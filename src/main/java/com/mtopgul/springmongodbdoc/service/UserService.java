@@ -1,6 +1,7 @@
 package com.mtopgul.springmongodbdoc.service;
 
 import com.mtopgul.springmongodbdoc.model.UserModel;
+import com.mtopgul.springmongodbdoc.model.UserStreamable;
 import com.mtopgul.springmongodbdoc.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -38,5 +39,13 @@ public class UserService {
     public void searchByFirstName(String firstName) {
         Streamable<UserModel> streamable = userRepository.findUserModelByFirstNameContaining(firstName);
         System.out.println(streamable);
+    }
+
+    public void searchByEmail(String email) {
+        UserStreamable userStreamable = userRepository.findAllByEmailContaining(email);
+        System.out.println(userStreamable);
+
+        userRepository.doSomethingOnUser(userStreamable.iterator().next());
+        userRepository.saveData(userStreamable.iterator().next());
     }
 }

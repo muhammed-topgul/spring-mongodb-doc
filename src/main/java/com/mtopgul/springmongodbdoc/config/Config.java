@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * @since 05/06/2023 15:52
  */
 @Configuration
-@EnableMongoRepositories(basePackages = "com.mtopgul.springmongodbdoc.repository")
+@EnableMongoRepositories(
+        basePackages = "com.mtopgul.springmongodbdoc.repository",
+        repositoryImplementationPostfix = "Impl")
 public class Config {
 }

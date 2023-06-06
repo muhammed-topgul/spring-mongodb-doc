@@ -30,8 +30,13 @@ public class UserController {
         return userService.findAll02();
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search-by-name")
     public void searchByFirstName(@RequestParam("name") String firstName) {
         userService.searchByFirstName(firstName);
+    }
+
+    @GetMapping("/search-by-email")
+    public void searchByEmail(@RequestParam("email") String email) {
+        userService.searchByEmail(email);
     }
 }
